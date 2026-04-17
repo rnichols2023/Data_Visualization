@@ -4,6 +4,8 @@ This project explores demographic, geographic, and population‑related patterns
 
 The goal of this report is to understand the structure of the dataset, visualize key relationships, and highlight meaningful insights.
 
+## Very Important Note- Please make sure to download the html file to be able to view the outputs and visualizations!!
+
 ## 📁 Dataset Overview
 The Midwest dataset contains county‑level information for several Midwestern states. Below is a quick reference for each column:
 
