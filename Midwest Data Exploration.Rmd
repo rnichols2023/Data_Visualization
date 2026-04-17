@@ -1,0 +1,81 @@
+
+title: "Midwest Data Exploration"
+output:
+  md_document:
+    variant: gfm
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(pillar)
+data("midwest")
+```
+
+# Data Overview
+
+```{r}
+head(midwest)
+tail(midwest)
+str(midwest)
+names(midwest)
+glimpse(midwest)
+class(midwest)
+```
+
+# Bar Plots
+
+```{r}
+ggplot(midwest) +
+  geom_bar(aes(y = state)) +
+  labs(title = "Count of Counties by State")
+```
+
+```{r}
+ggplot(midwest) +
+  geom_bar(aes(y = state)) +
+  labs(title = "Count of Counties by State (Horizontal)") +
+  coord_flip()
+```
+
+# Histograms
+
+```{r}
+ggplot(midwest, aes(x = poptotal)) +
+  geom_histogram(fill = "purple", alpha = 0.7, binwidth = 5000) +
+  labs(title = "Distribution of Total Population")
+```
+
+```{r}
+ggplot(midwest, aes(x = popdensity)) +
+  geom_histogram(fill = "purple", alpha = 0.7, binwidth = 10000) +
+  labs(title = "Distribution of Population Density") +
+  theme_bw()
+```
+
+# Scatterplots
+
+```{r}
+ggplot(midwest, aes(x = area, y = popdensity)) +
+  geom_point() +
+  labs(title = "Area vs Population Density")
+```
+
+```{r}
+ggplot(midwest, aes(x = area, y = popdensity)) +
+  geom_line() +
+  labs(title = "Area vs Population Density (Line Plot)")
+```
+
+# Stacked Bar Plot
+
+```{r}
+midwest$state <- factor(midwest$state)
+midwest$category <- factor(midwest$category)
+
+ggplot(midwest, aes(x = state, fill = category)) +
+  geom_bar() +
+  labs(title = "Categories by State") +
+  theme(legend.position = "top")
+```
+
